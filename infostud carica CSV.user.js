@@ -15,8 +15,6 @@
 
 var $ = window.jQuery;
 
-
-
 $(document).ready(function() {
   var myHTML = "<p><input type='file' id='csvFileInput'/> <a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(0)'>Load CSV</a></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(1)'>Assign absent (A) students without a date to date:</a> <input type='date' id='examdate' name='examdate'></p>";
@@ -24,27 +22,6 @@ $(document).ready(function() {
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(3)'>Assign all (present/A/R) students without a date to date:</a> <input type='date' id='examdate' name='examdate'></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(4)'>Assign all (present/A/R) students without a date to today</a></p>";
   $(myHTML).insertAfter("h1:contains('Caricamento esiti')");
-
-  // var ulElement = $("h1:contains('Caricamento esiti')");
-  // ulElement.append("<br/><input type='file' id='csvFileInput'/><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV()'>Load CSV</a>");
-//   $("select").each(function(index) {
-//       //console.log($(this).attr("id"));
-//       if($(this).attr("id").substr(0,8) == "selStato") {
-//           if($(this).attr("disabled") != "disabled"){
-//               // console.log($(this));
-//               //$("option").removeAttr("selected")
-//               // $("[value=3]").attr('selected', ' ');
-//               $(this).children('option:nth-child(1)').removeAttr('selected');
-//               $(this).children('option:nth-child(2)').removeAttr('selected');
-//               $(this).children('option:nth-child(3)').removeAttr('selected');
-//               $(this).children('option:nth-child(4)').removeAttr('selected');
-//               $(this).children('option:nth-child(3)').attr('selected', '');
-//           }
-//           else{
-//               //console.log("no")
-//           }
-//       }
-//   });
 
 
 function loadCSV(mode) {
@@ -147,7 +124,6 @@ function processData(csvData, mode) {
         }else{
             console.log(matriculation, " is already recorded");
         }
-
     } else {
       // Break the loop if a row with the current ID doesn't exist
       break;
