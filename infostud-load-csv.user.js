@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name infostud carica CSV
 // @namespace https://github.com/mauman/infostud-load-csv
-// @version 0.1.7
+// @version 0.1.8
 // @description  set the status of all students to "rinuncia"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
@@ -23,14 +23,13 @@ $(document).ready(function() {
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(4)'>Assign all (present/A/R) students without a date to today</a></p>";
   $(myHTML).insertAfter("h1:contains('Caricamento esiti')");
 
-
 function loadCSV(mode) {
   var fileInput = document.getElementById('csvFileInput');
   var file = fileInput.files[0];
 
   if (file) {
     var reader = new FileReader();
-
+    
     reader.onload = function(e) {
       var csvData = e.target.result;
       processData(csvData, mode);
@@ -124,7 +123,6 @@ function processData(csvData, mode) {
                     }
                 }
             }
-            
             check.checked = true;
         }else{
             console.log(matriculation, " is already recorded");
