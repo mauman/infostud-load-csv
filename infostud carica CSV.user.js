@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name infostud carica CSV
 // @namespace https://github.com/mauman/infostud-load-csv
-// @version 0.1.4
+// @version 0.1.5
 // @description  set the status of all students to "rinuncia"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
@@ -17,9 +17,9 @@ var $ = window.jQuery;
 
 $(document).ready(function() {
   var myHTML = "<p><input type='file' id='csvFileInput'/> <a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(0)'>Load CSV</a></p>";
-  myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(1)'>Assign absent (A) students without a date to date:</a> <input type='date' id='examdate' name='examdate'></p>";
+  myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(1)'>Assign absent (A) students without a date to date:</a> <input type='date' id='examdate0' name='examdate0'></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(2)'>Assign absent (A) students without a date to today</a></p>";
-  myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(3)'>Assign all (present/A/R) students without a date to date:</a> <input type='date' id='examdate' name='examdate'></p>";
+  myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(3)'>Assign all (present/A/R) students without a date to date:</a> <input type='date' id='examdate1' name='examdate1'></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(4)'>Assign all (present/A/R) students without a date to today</a></p>";
   $(myHTML).insertAfter("h1:contains('Caricamento esiti')");
 
@@ -103,7 +103,12 @@ function processData(csvData, mode) {
                 }
             } else {
                 if (((result[0] == "A") && (mode == 1)) || (mode == 3)){
-                    date = $("examdate").value.split("-");
+                    if (mode ==1){
+                        date = $("examdate0").value.split("-");
+                    }
+                    if (mode ==3){
+                        date = $("examdate1").value.split("-");
+                    }
                     day.value = date[2];
                     month.value = date[1];
                     year.value = date[0];
