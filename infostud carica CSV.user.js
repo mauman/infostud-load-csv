@@ -6,7 +6,7 @@
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
 // @require http://code.jquery.com/jquery-latest.js
-// @downloadURL https://github.com/mauman/infostud-load-csv/raw/main/infostud%20carica%20CSV.user.js
+// @updateURL https://github.com/mauman/infostud-load-csv/raw/main/infostud%20carica%20CSV.user.js
 // ==/UserScript==
 
 'use strict';
