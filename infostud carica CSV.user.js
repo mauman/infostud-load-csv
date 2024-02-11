@@ -5,6 +5,7 @@
 // @description  set the status of all students to "rinuncia"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
+// @author The Sapienza Computer Science Programming Team
 // @require http://code.jquery.com/jquery-latest.js
 // @updateURL https://github.com/mauman/infostud-load-csv/raw/main/infostud%20carica%20CSV.user.js
 // @downloadURL https://github.com/mauman/infostud-load-csv/raw/main/infostud%20carica%20CSV.user.js
