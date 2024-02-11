@@ -7,8 +7,8 @@
 // @copyright 2021, mauman
 // @author The Sapienza Computer Science Programming Team
 // @require http://code.jquery.com/jquery-latest.js
-// @updateURL https://github.com/mauman/infostud-load-csv/raw/main/infostud-load-csv.js
-// @downloadURL https://github.com/mauman/infostud-load-csv/raw/main/infostud-load-csv.js
+// @updateURL https://github.com/mauman/infostud-load-csv/raw/main/infostud-load-csv.user.js
+// @downloadURL https://github.com/mauman/infostud-load-csv/raw/main/infostud-load-csv.user.js
 // ==/UserScript==
 
 'use strict';
