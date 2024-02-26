@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name infostud carica CSV
 // @namespace https://github.com/mauman/infostud-load-csv
-// @version 0.1.9
+// @version 0.1.8.1
 // @description  set the status of all students to "rinuncia"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
@@ -21,7 +21,7 @@ $(document).ready(function() {
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(2)'>Assign absent (A) students without a date to today</a></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(3)'>Assign all (present/A/R) students without a date to date:</a> <input type='date' id='examdate1' name='examdate1'></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(4)'>Assign all (present/A/R) students without a date to today</a></p>";
-  myHTML += "<p><a href=\"javascript:vaiParametriMIO('VerbalizzazioneEsame.jsp','4','1','1','n')\">Go to next page</a>";
+  myHTML += "<p><a href=\"javascript:vaiParametriMIO('VerbalizzazioneEsame.jsp','4','1','1','n')\">Go to next page!</a>";
   $(myHTML).insertAfter("h1:contains('Caricamento esiti')");
 
 function loadCSV(mode) {
