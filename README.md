@@ -16,6 +16,6 @@ so create a CSV file as:
 | 24680         | Alice   | Johnson  | alice.johnson@example.com | A     | 08/02/2024 |
 | 13579         | Bob     | Brown    | bob.brown@example.com     |  28   |            |
 
-**BEWARE:** all missing students will be recorded as "A" (absent) - DON'T do partial verbalizations
+**NOTE:** you can select if students missing in the file should be ignored (default) or marked "A"bsent
 
 Enjoy!
