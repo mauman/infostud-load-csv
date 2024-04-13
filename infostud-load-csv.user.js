@@ -95,12 +95,12 @@ function processData(csvData, mode) {
                 }
             }
             else if (result[0] == "A"){ // absent
-                grade.value = "A"
+                // grade.value = "A"
                 state.value = "2";
                 check.checked = true;
             }
             else if (result[0] == "R"){ // insufficient
-                grade.value = "R"
+                // grade.value = "R"
                 state.value = "3";
                 check.checked = true;
             } else {                    // grade
