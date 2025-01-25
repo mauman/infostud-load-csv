@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name infostud carica CSV
 // @namespace https://github.com/mauman/infostud-load-csv
-// @version 0.1.8.3
+// @version 0.1.8.4
 // @description  set the status of all students to "Rinuncia/Assente/voto"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
@@ -45,9 +45,9 @@ function loadCSV(mode) {
 
 function getStudentResult(csvData, matriculation) {
     var rows = csvData.split('\n');
-    var header = rows[0].split(',');
-    for (var i = 0; i < rows.length; i++) {
-    var cells = rows[i].replace('\r', '').replace('\n', '').split(',');
+    var header = rows[0].replaceAll('\t',',').replaceAll(';',',').split(',');
+    for (var i = 1; i < rows.length; i++) {
+    var cells = rows[i].replace('\r', '').replace('\n', '').replaceAll('\t',',').replaceAll(';',',').split(',');
     // Process the data as needed
         if (matriculation == Number(cells[0])){
             if (cells[5] != ""){
