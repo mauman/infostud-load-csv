@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name infostud carica CSV
 // @namespace https://github.com/mauman/infostud-load-csv
-// @version 0.1.8.5
-// @description  set the status of all students to "Rinuncia/Bocciato/Assente/voto"
+// @version 0.1.8.6
+// @description  set the status of all students to "Rinuncia/Bocciato/Assente/Lode/voto"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
 // @author The Sapienza Computer Science Programming Team
@@ -106,6 +106,12 @@ function processData(csvData, mode) {
             }
             else if (result[0] == "B"){ // insufficient
                 grade.value = "17";     // 17 = FAILED (BOCCIATO)
+                state.value = "1";
+                check.checked = true;
+            }
+            else if ((result.substring(0, result.lastIndexOf(" ")) == "30+L") ||
+                     (result[0] == "L")){ // 30 cum laude
+                grade.value = "31";     // 31 = 30 cum laude
                 state.value = "1";
                 check.checked = true;
             } else {                    // grade
