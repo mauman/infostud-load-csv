@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name infostud carica CSV
 // @namespace https://github.com/mauman/infostud-load-csv
-// @version 0.1.8.6
+// @version 0.1.8.7
 // @description  set the status of all students to "Rinuncia/Bocciato/Assente/Lode/voto"
 // @match https://stud.infostud.uniroma1.it/Sest/NuovaVerb/*
 // @copyright 2021, mauman
@@ -22,6 +22,7 @@ $(document).ready(function() {
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(2)'>Assign absent (A) students without a date to today</a></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(3)'>Assign all (present/A/R) students without a date to date:</a> <input type='date' id='examdate1' name='examdate1'></p>";
   myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); loadCSV(4)'>Assign all (present/A/R) students without a date to today</a></p>";
+  myHTML += "<p><a href='javascript:void(0);' onclick='event.preventDefault(); setCheckedToR()'>Assign all checked students the status \"R\"</a></p>";
   myHTML += "<p><a href=\"javascript:vaiParametriMIO('VerbalizzazioneEsame.jsp','4','1','1','n')\">Go to next page!</a>";
   $(myHTML).insertAfter("h1:contains('Caricamento esiti')");
 
@@ -60,6 +61,35 @@ function getStudentResult(csvData, matriculation) {
     }
     console.log("I could not find ", matriculation, "in the csv file");
     return "M //";  // AS - missing students are ignored instead than Absent
+}
+
+function setCheckedToR() {
+    var i;
+  for (i = 0; ; i++) {
+    var studentId = "tdStud" + i;
+    var student   = $(studentId);
+    var gradeId   = "voto" + i;
+    var grade     = $(gradeId);
+    var stateId   = "selStato" + i;
+    var state     = $(stateId);
+    var day       = $("giorno" + i);
+    var month     = $("mese" + i);
+    var year      = $("anno" + i);
+    var check     = $("Check" + i);
+    var ignore    = $("ignore_missing");
+    var date;
+
+    if (student) {
+        var matriculation = Number(student.textContent.substring(student.textContent.lastIndexOf(" ") + 1));
+        console.log("found student ", matriculation, " checked ", check.checked);
+        if (check.checked) {
+            state.value = 3;
+        }
+    } else {
+      // Break the loop if a row with the current ID doesn't exist
+      break;
+    }
+  }
 }
 
 function processData(csvData, mode) {
@@ -180,6 +210,7 @@ function processData(csvData, mode) {
   addDOMScriptNode(null, null, loadCSV);
   addDOMScriptNode(null, null, processData);
   addDOMScriptNode(null, null, getStudentResult);
+  addDOMScriptNode(null, null, setCheckedToR);
 
 
 });
